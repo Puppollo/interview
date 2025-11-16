@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7cat1fx7vcpc"]
+
+[ext_resource type="Texture2D" uid="uid://bk5ph0lil3jxd" path="res://art/scooter.png" id="1_euyig"]
+[ext_resource type="Script" uid="uid://bj0f80nh3c3l4" path="res://levels/scenes/scooter/scooter.gd" id="1_pc7lu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pc7lu"]
+size = Vector2(39, 57)
+
+[node name="Scooter" type="Area2D"]
+script = ExtResource("1_pc7lu")
+grow_steps = 2
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.499993, 0.75000715)
+scale = Vector2(0.14052293, 0.13461544)
+texture = ExtResource("1_euyig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, 0.5)
+shape = SubResource("RectangleShape2D_pc7lu")

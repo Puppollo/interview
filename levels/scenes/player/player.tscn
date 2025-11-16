@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1eytwejrypoo"]
+
+[ext_resource type="PackedScene" uid="uid://b7cat1fx7vcpc" path="res://levels/scenes/scooter/scooter.tscn" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://dkhe12n2dcbkc" path="res://levels/scenes/player/player.gd" id="1_rkbax"]
+
+[node name="player" type="Node2D"]
+script = ExtResource("1_rkbax")
+metadata/_edit_group_ = true
+
+[node name="Scooter" parent="." instance=ExtResource("1_oul6g")]
+
+[node name="HitTimer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Scooter" to="." method="_on_hitted"]
+[connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]

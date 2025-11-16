@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxbrr64oybkvn"]
+
+[ext_resource type="PackedScene" uid="uid://cvmubvcf01l4i" path="res://levels/scenes/road/road.tscn" id="1_fvhdp"]
+[ext_resource type="Script" uid="uid://d2v8qwewdwqla" path="res://levels/1/level_1.gd" id="1_kk1fl"]
+[ext_resource type="PackedScene" uid="uid://b1eytwejrypoo" path="res://levels/scenes/player/player.tscn" id="2_kk1fl"]
+[ext_resource type="PackedScene" uid="uid://bscxt5nwci53n" path="res://levels/scenes/mamka/mamka.tscn" id="4_qpm2k"]
+[ext_resource type="Texture2D" uid="uid://c4rayx0k4jcxw" path="res://art/p2521.jpg" id="5_c5vo0"]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_kk1fl")
+mamka_scene = ExtResource("4_qpm2k")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+
+[node name="FarBackground" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(495, 259)
+texture = ExtResource("5_c5vo0")
+
+[node name="road" parent="." instance=ExtResource("1_fvhdp")]
+position = Vector2(0, 300)
+
+[node name="player" parent="." instance=ExtResource("2_kk1fl")]
+position = Vector2(250, 320)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[node name="ScoresLabel" type="Label" parent="."]
+offset_left = 990.0
+offset_top = 21.0
+offset_right = 1140.0
+offset_bottom = 64.0
+text = "score: 0"
+
+[connection signal="speed_changed" from="player" to="." method="_on_player_speed_changed"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

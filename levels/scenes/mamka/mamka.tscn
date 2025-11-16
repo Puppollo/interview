@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bscxt5nwci53n"]
+
+[ext_resource type="Texture2D" uid="uid://bd4eaulr8mye1" path="res://art/mamka.png" id="1_cokpx"]
+[ext_resource type="Script" uid="uid://gjkovugk7mh3" path="res://levels/scenes/mamka/mamka.gd" id="1_l4c4c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2j08m"]
+size = Vector2(212, 251)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_l4c4c")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cokpx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -4.5)
+shape = SubResource("RectangleShape2D_2j08m")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
